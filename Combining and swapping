@@ -1,0 +1,43 @@
+import cv2
+x = cv2.imread("cartoon1.jpg")[0:255]
+y = cv2.imread("cartoon4.jpg")[0:255,0:162]
+x.shape
+y.shape
+
+
+## Merging/Combining the two images.....
+
+import numpy as np
+merged_photo = np.vstack((x,y))
+merged_photo1 = np.hstack((x,y))
+
+cv2.imshow("p" , merged_photo)
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+cv2.imshow("q" , merged_photo1)
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+
+## Cropping some part of the images from the both and swapping them...
+
+a = x[20:130 , 35:150]
+b = y[20:130 , 35:150]
+a.shape
+b.shape
+type(a)
+import matplotlib.pyplot as plt
+plt.imshow(a)
+plt.imshow(b)
+x1 = x.copy()
+x1[20:130 , 35:150] = b
+y[20:130 , 35:150] = a
+
+cv2.imshow("hi" , x1)
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+cv2.imshow("hi" , y)
+cv2.waitKey()
+cv2.destroyAllWindows()
